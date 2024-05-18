@@ -1,8 +1,10 @@
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/layout/Navbar";
 import Search from "./components/users/Search";
 import About from "./components/pages/About";
+import User from "./components/users/User";
 import NotFound from "./components/pages/NotFound";
 const App = () => {
   return (
@@ -10,11 +12,12 @@ const App = () => {
       <Router>
         <Navbar />
         <div className="container">
-          <Switch>
-            <Route exact path="/" component={Search} />
-            <Route exact path="/about" component={About} />
-            <Route path="/*" component={NotFound}></Route>
-          </Switch>
+          <Routes >
+            <Route exact path="/" element={<Search />} />
+            <Route exact path="/about" element={<About />} />
+            <Route exact path="/user/:id" element={<User />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes >
         </div>
       </Router>
     </div>
