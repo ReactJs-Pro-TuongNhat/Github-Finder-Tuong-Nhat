@@ -1,26 +1,43 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Users from "./Users";
-import { searchUsers } from "../../apis/api"
+import { searchUsers } from "../../apis/api";
+
 const Search = () => {
     const [text, setText] = useState("");
     const [users, setUsers] = useState([]);
 
+    useEffect(() => {
+        const storedText = sessionStorage.getItem("searchText");
+        if (storedText) {
+            setText(storedText);
+            searchUsers(storedText).then((data) => {
+                setUsers(data.items);
+            });
+        }
+    }, []);
+
     const clearUsers = () => {
+        setText("");
         setUsers([]);
+        sessionStorage.removeItem("searchText");
     };
+
     const onSubmit = (e) => {
         e.preventDefault();
         if (text === "") {
             alert("Please enter something");
         } else {
-            searchUsers(text).then((data)=>{
+            searchUsers(text).then((data) => {
                 setUsers(data.items);
+                sessionStorage.setItem("searchText", text);
             });
             setText("");
         }
     };
+
     const onChange = (e) => setText(e.target.value);
+
     return (
         <div>
             <form onSubmit={onSubmit} className="form">
@@ -47,4 +64,5 @@ const Search = () => {
         </div>
     );
 };
+
 export default Search;
