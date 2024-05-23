@@ -1,19 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
 import Users from "./Users";
+import { searchUsers } from "../../apis/api"
 const Search = () => {
     const [text, setText] = useState("");
     const [users, setUsers] = useState([]);
-    const searchUsers = async (text) => {
-        try {
-            const response = await axios.get(
-                `https://api.github.com/search/users?q=${text} `
-            );
-            setUsers(response.data.items);
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        }
-    };
+
     const clearUsers = () => {
         setUsers([]);
     };
@@ -22,7 +14,9 @@ const Search = () => {
         if (text === "") {
             alert("Please enter something");
         } else {
-            searchUsers(text);
+            searchUsers(text).then((data)=>{
+                setUsers(data.items);
+            });
             setText("");
         }
     };

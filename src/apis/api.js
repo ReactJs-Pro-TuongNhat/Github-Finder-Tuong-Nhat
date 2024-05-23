@@ -23,3 +23,14 @@ export const getUserRepos = async (id) => {
         console.error("Error fetching data:", error.message);
     }
 };
+
+export const searchUsers = async (text) => {
+    try {
+        const response = await axios.get(
+            `https://api.github.com/search/users?q=${text} `
+        );
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+};
