@@ -1,4 +1,4 @@
-import { SET_KEY, SET_USERS } from './constants';
+import { SET_KEY, SET_USERS, SET_MODE } from './constants';
 
 export const setKey = payload => ({
   type: SET_KEY,
@@ -7,5 +7,10 @@ export const setKey = payload => ({
 
 export const setUsers = payload => ({
   type: SET_USERS,
+  payload,
+});
+
+export const setMode = payload => ({
+  type: SET_MODE,
   payload,
 });

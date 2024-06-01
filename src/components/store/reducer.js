@@ -1,7 +1,8 @@
-import { SET_KEY, SET_USERS } from './constants';
+import { SET_KEY, SET_USERS, SET_MODE } from './constants';
 const initialState = {
     users: [],
     text: "",
+    mode: "light"
 };
 
 function reducer(state, action) {
@@ -15,6 +16,11 @@ function reducer(state, action) {
             return {
                 ...state,
                 users: action.payload,
+            };
+        case SET_MODE:
+            return {
+                ...state,
+                mode: action.payload,
             };
         default:
             return 'Invalid action';

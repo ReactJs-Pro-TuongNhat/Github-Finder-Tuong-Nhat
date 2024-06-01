@@ -433,3 +433,13 @@ table th {
   left: 0;
   width: 100%;
 }
+
+body.bg-light {
+  background-color: white;
+  color: black;
+}
+
+body.bg-dark {
+  background-color: purple;
+  color: white;
+}
