@@ -435,11 +435,50 @@ table th {
 }
 
 body.bg-light {
-  background-color: white;
-  color: black;
+  background-color: var(--light-color);
+  color: var(--dark-color);
 }
 
 body.bg-dark {
   background-color: purple;
-  color: white;
+  color: var(--light-color);
+}
+
+/* Card Group */
+.card-group {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.card-item {
+  width: 28%;
+  height: auto;
+  margin: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.card-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-item h3 {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-item p {
+  margin-bottom: 1rem;
+  color: #666;
+  word-wrap: break-word;  
+}
+
+.card-item .btn {
+  margin-bottom: 1rem;
 }

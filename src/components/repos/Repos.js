@@ -5,7 +5,7 @@ const Repos = ({ repos }) => {
     return (
         <div className="card-group">
             {repos.map((repo) => (
-                <RePoItem key={repo.id} name={repo.name} description={repo.description} deployments_url={repo.deployments_url} />
+                <RePoItem key={repo.id} name={repo.name} description={repo.description} deployments_url={repo.clone_url} />
             ))}
         </div>
     );
